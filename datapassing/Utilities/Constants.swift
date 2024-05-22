@@ -10,5 +10,6 @@ import UIKit
 struct K {
     static let categoryReuseID = "ReusableCell"
     static let listReuseID = "goToList"
+    static let cellNibName = "MessageCell"
     
 }

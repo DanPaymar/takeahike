@@ -40,7 +40,7 @@ class ListViewController: UIViewController {
         
         tableView.dataSource = self
         tableView.delegate = self
-        
+        tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.categoryReuseID)
         title = "Select Gear"
     }
     
@@ -74,13 +74,14 @@ extension ListViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.categoryReuseID, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.categoryReuseID, for: indexPath) as! MessageCell
         let essential = datasource[indexPath.row]
+        cell.cellLabel.text = essential.itemName
         // configure the table cell
-        var content = cell.defaultContentConfiguration()
-        content.text = essential.itemName
-        
-        cell.contentConfiguration = content
+//        var content = cell.defaultContentConfiguration()
+//        content.text = essential.itemName
+//        
+//        cell.contentConfiguration = content
 
         return cell
     }
@@ -94,7 +95,6 @@ extension ListViewController: UITableViewDelegate {
         
         user.kitItems.append(selectedEssential)
         
-        let kitVC = KitViewController()
-        self.present(kitVC, animated: true)
+
     }
 }

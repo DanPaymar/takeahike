@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B715C9692BFE66A400077D5B /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B715C9672BFE66A400077D5B /* MessageCell.swift */; };
+		B715C96A2BFE66A400077D5B /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B715C9682BFE66A400077D5B /* MessageCell.xib */; };
 		B7FF6D302BF7E39600D16DA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FF6D2F2BF7E39600D16DA4 /* AppDelegate.swift */; };
 		B7FF6D322BF7E39600D16DA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7FF6D312BF7E39600D16DA4 /* SceneDelegate.swift */; };
 		B7FF6D372BF7E39600D16DA4 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = B7FF6D362BF7E39600D16DA4 /* Base */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B715C9672BFE66A400077D5B /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		B715C9682BFE66A400077D5B /* MessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
 		B7FF6D2C2BF7E39600D16DA4 /* datapassing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = datapassing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B7FF6D2F2BF7E39600D16DA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B7FF6D312BF7E39600D16DA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +108,8 @@
 				B7FF6D4B2BF7E63200D16DA4 /* StartViewController.swift */,
 				B7FF6D542BFB99B700D16DA4 /* KitViewController.swift */,
 				B7FF6D4D2BF7EB1500D16DA4 /* ListViewController.swift */,
+				B715C9672BFE66A400077D5B /* MessageCell.swift */,
+				B715C9682BFE66A400077D5B /* MessageCell.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -184,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7FF6D392BF7E39700D16DA4 /* Assets.xcassets in Resources */,
+				B715C96A2BFE66A400077D5B /* MessageCell.xib in Resources */,
 				B7FF6D3C2BF7E39700D16DA4 /* Base in Resources */,
 				B7FF6D372BF7E39600D16DA4 /* Base in Resources */,
 			);
@@ -197,6 +204,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B7FF6D4C2BF7E63200D16DA4 /* StartViewController.swift in Sources */,
+				B715C9692BFE66A400077D5B /* MessageCell.swift in Sources */,
 				B7FF6D302BF7E39600D16DA4 /* AppDelegate.swift in Sources */,
 				B7FF6D4E2BF7EB1500D16DA4 /* ListViewController.swift in Sources */,
 				B7FF6D492BF7E4E600D16DA4 /* Control.swift in Sources */,
