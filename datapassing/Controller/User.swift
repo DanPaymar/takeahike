@@ -8,5 +8,9 @@
 import UIKit
 
 class User {
-    var kitItems: [Essential] = []
+    var datasource: [Essential] = [
+        Essential(itemName: "Backpack", itemType: .base),
+        Essential(itemName: "Water bottle", itemType: .base),
+        Essential(itemName: "Wind jacket", itemType: .base)
+    ]
 }

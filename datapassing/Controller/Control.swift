@@ -7,18 +7,17 @@
 
 import UIKit
 
-class Essential: Gear {
-    var id: String = UUID().uuidString
+class Essential {
     var itemName: String
     var itemType: GearItemType
+    var count = 0
     
     init(itemName: String, itemType: GearItemType) {
         self.itemName = itemName
         self.itemType = .base
     }
 }
-class Day: Gear {
-    var id: String = UUID().uuidString
+class Day  {
     var itemName: String
     var itemType: GearItemType
     
@@ -27,8 +26,7 @@ class Day: Gear {
         self.itemType = .day
     }
 }
-class Night: Gear {
-    var id: String = UUID().uuidString
+class Night {
     var itemName: String
     var itemType: GearItemType
     
@@ -37,8 +35,7 @@ class Night: Gear {
         self.itemType = .night
     }
 }
-class MultiDay: Gear {
-    var id: String = UUID().uuidString
+class MultiDay {
     var itemName: String
     var itemType: GearItemType
     
@@ -46,12 +43,6 @@ class MultiDay: Gear {
         self.itemName = itemName
         self.itemType = .multiDay
     }
-}
-
-protocol Gear {
-    var id: String { get set }
-    var itemName: String { get set }
-    var itemType: GearItemType { get set }
 }
 
 enum GearItemType {

@@ -30,7 +30,7 @@ class StartViewController: UIViewController {
     
     func setupButton() {
         startButton.setTitle("Kit List", for: .normal)
-        startButton.backgroundColor = .green
+        startButton.tintColor = .green
     }
     func setupStartLabel() {
         startViewLabel.text = "Take a Hike"

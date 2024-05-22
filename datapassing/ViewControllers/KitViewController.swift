@@ -12,7 +12,7 @@ class KitViewController: UIViewController {
     
     let user = User()
     
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -35,27 +35,38 @@ class KitViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
     }
-
+    
 }
 
 extension KitViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        user.kitItems.count 
-
+        user.datasource.count
+        
     }
-   
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: K.categoryReuseID, for: indexPath)
 
-        let kitItem = user.kitItems[indexPath.row]
+        var item = user.datasource[indexPath.row]
+        
+        if indexPath.row < item.count {
+            return getTableCell(indexPath: indexPath)
+        } else indexPath == item.datasource.count {
+            return getTableCell(indexPath: indexPath)
+        }
+    }
+    
+    private func getTableCell(indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.categoryReuseID, for: indexPath)
+        let kitItem = user.datasource[indexPath.row]
+        
         var content = cell.defaultContentConfiguration()
-        content.text = kitItem.itemName
+        
+        content.text = "\(kitItem.count) \(kitItem.itemName)"
         cell.contentConfiguration = content
         
         return cell
     }
     
-
     
 }
 

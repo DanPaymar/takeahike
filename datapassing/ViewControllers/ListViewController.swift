@@ -12,12 +12,7 @@ class ListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addCustomButton: UIBarButtonItem!
     
-    @IBAction func addCustomButton(_ sender: Any) {
-        showAddItem()
-    }
-    
     var user: User
-    var essentials: [Essential] = []
     
     init(coder: NSCoder, user: User) {
         self.user = user
@@ -29,11 +24,6 @@ class ListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var datasource: [Essential] = [
-        Essential(itemName: "Backpack", itemType: .base),
-        Essential(itemName: "Water bottle", itemType: .base),
-        Essential(itemName: "Wind jacket", itemType: .base)
-    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +32,10 @@ class ListViewController: UIViewController {
         tableView.delegate = self
         tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.categoryReuseID)
         title = "Select Gear"
+    }
+    
+    @IBAction func addCustomButton(_ sender: Any) {
+        showAddItem()
     }
     
     private func showAddItem() {
@@ -70,13 +64,17 @@ class ListViewController: UIViewController {
 
 extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return datasource.count
+        return user.datasource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.categoryReuseID, for: indexPath) as! MessageCell
-        let essential = datasource[indexPath.row]
-        cell.cellLabel.text = essential.itemName
+        let item = user.datasource[indexPath.row]
+        
+        cell.item = item
+        
+        cell.cellLabel.text = item.itemName
+        cell.countLabel.text = String(item.count)
         // configure the table cell
 //        var content = cell.defaultContentConfiguration()
 //        content.text = essential.itemName
@@ -90,11 +88,11 @@ extension ListViewController: UITableViewDataSource {
 }
 
 extension ListViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedEssential = datasource[indexPath.row]
-        
-        user.kitItems.append(selectedEssential)
-        
-
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let selectedEssential = datasource[indexPath.row]
+//        
+//        user.kitItems.append(selectedEssential)
+//        
+//
+//    }
 }
