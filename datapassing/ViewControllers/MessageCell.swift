@@ -19,7 +19,7 @@ class MessageCell: UITableViewCell {
     
     @IBAction func cellStepper(_ sender: UIStepper) {
         item?.count = Int(sender.value)
-        
+        print(sender.value)
         countLabel.text = "\(Int(sender.value))"
         
     }

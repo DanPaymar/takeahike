@@ -45,28 +45,23 @@ extension KitViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        var item = user.datasource[indexPath.row]
-        
-        if indexPath.row < item.count {
-            return getTableCell(indexPath: indexPath)
-        } else indexPath == item.datasource.count {
-            return getTableCell(indexPath: indexPath)
-        }
-    }
-    
-    private func getTableCell(indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.categoryReuseID, for: indexPath)
+
         let kitItem = user.datasource[indexPath.row]
         
-        var content = cell.defaultContentConfiguration()
-        
-        content.text = "\(kitItem.count) \(kitItem.itemName)"
-        cell.contentConfiguration = content
-        
+        if kitItem.count == 0 {
+            print("table cells have zero values")
+            
+        } else {
+            var content = cell.defaultContentConfiguration()
+            
+            content.text = "\(kitItem.count) \(kitItem.itemName)"
+            cell.contentConfiguration = content
+            
+            return cell
+        }
         return cell
     }
-    
     
 }
 
