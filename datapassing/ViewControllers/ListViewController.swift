@@ -7,11 +7,15 @@
 
 import UIKit
 
+//protocol ListViewControllerDelegate: AnyObject {
+//    func didUpdateItems()
+//}
+
 class ListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addCustomButton: UIBarButtonItem!
-    
+    // pass the user to the list view
     var user: User
     
     init(coder: NSCoder, user: User) {
@@ -37,6 +41,15 @@ class ListViewController: UIViewController {
     @IBAction func addCustomButton(_ sender: Any) {
         showAddItem()
     }
+    
+//    weak var delegate: ListViewControllerDelegate?
+//
+//        // Call this method when the user updates the items
+//        func updateItems() {
+//            // ... your logic for updating items ...
+//            
+//            delegate?.didUpdateItems()
+//        }
     
     private func showAddItem() {
         let alertController = UIAlertController(title: "Add Custom Item", message: "Type in your item here", preferredStyle: .alert)
@@ -64,22 +77,21 @@ class ListViewController: UIViewController {
 
 extension ListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // returns the users datasource essential objects array
         return user.datasource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.categoryReuseID, for: indexPath) as! MessageCell
         let item = user.datasource[indexPath.row]
-        
-        cell.item = item
-        
-        cell.cellLabel.text = item.itemName
-        cell.countLabel.text = String(item.count)
         // configure the table cell
-//        var content = cell.defaultContentConfiguration()
-//        content.text = essential.itemName
-//        
-//        cell.contentConfiguration = content
+        cell.item = item
+        // assign the item name to the cell label
+        cell.cellLabel.text = item.itemName
+        // assign the item count from stepper to the stepper value
+        cell.cellStepper.value = Double(item.count)
+        // assign the item count to the cell count label
+        cell.countLabel.text = String(item.count)
 
         return cell
     }
@@ -88,11 +100,5 @@ extension ListViewController: UITableViewDataSource {
 }
 
 extension ListViewController: UITableViewDelegate {
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let selectedEssential = datasource[indexPath.row]
-//        
-//        user.kitItems.append(selectedEssential)
-//        
-//
-//    }
+
 }

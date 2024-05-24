@@ -8,7 +8,7 @@
 import UIKit
 
 class StartViewController: UIViewController {
-    
+    // intiliaze a new user
     var user = User()
     
     @IBOutlet weak var startButton: UIButton!
@@ -20,6 +20,7 @@ class StartViewController: UIViewController {
     @IBAction func startButton(_ sender: UIButton) {
         self.performSegue(withIdentifier: "goToList", sender: self)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
