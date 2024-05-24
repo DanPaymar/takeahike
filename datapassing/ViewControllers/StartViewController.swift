@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class StartViewController: UIViewController {
     // intiliaze a new user
     var user = User()

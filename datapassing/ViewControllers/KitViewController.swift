@@ -21,28 +21,19 @@ class KitViewController: UIViewController {
         title = "Gear"
     }
     // initialize a new empty array of essential objects assigned to tableItems
-    var tableItems = [Essential]() 
-//        didSet { // automatically calls updateContentUnavailableView whenever value of table items changes
-//            updateContentUnavailableView()
-//        }
-//    }
+    var tableItems = [Essential]()
+    
     
     override func viewWillAppear(_ animated: Bool) {
-           super.viewWillAppear(animated)
-           if tableItems.count == 0 {
-               var config = UIContentUnavailableConfiguration.empty()
-               
-               config.image = UIImage(systemName: "figure.hiking")
-               config.text = "You don't have any gear"
-               config.secondaryText = "Add items and get hiking"
-               self.contentUnavailableConfiguration = config
-           } else {
-               // assign the users table items to table items
-               tableItems = User.userTableItems(user: user)
-               tableView.reloadData()
-           }
-     
-       }
+        super.viewWillAppear(animated)
+        // assign the Users user table items to the table item row
+        tableItems = User.userTableItems(user: user)
+        // reload the data of the table view
+        tableView.reloadData()
+        
+        setupContentUnavailableConfig()
+        
+    }
     
     @IBSegueAction func plusButtonTapped(_ coder: NSCoder) -> ListViewController? {
         return ListViewController(coder: coder, user: user)
@@ -54,23 +45,18 @@ class KitViewController: UIViewController {
         tableView.dataSource = self
     }
     
-//    // Function to update the content unavailable view
-//        private func updateContentUnavailableView() {
-//            if tableItems.isEmpty {
-//                var config = UIContentUnavailableConfiguration.empty()
-//                config.image = UIImage(systemName: "figure.hiking")
-//                config.text = "You don't have any gear"
-//                config.secondaryText = "Add items and get hiking"
-//                tableView.backgroundView = nil // Remove any existing background view
-//                tableView.separatorStyle = .none // Hide separators
-//                tableView.backgroundView = UIView(frame: tableView.bounds) // Set up a background view
-//                tableView.backgroundView?.backgroundColor = .systemBackground // Set background color
-////                self.tableView.backgroundView?.addSubview(UILabel(text: "No data")) // Add a label
-//            } else {
-//                tableView.backgroundView = nil // Remove content unavailable view
-//                tableView.separatorStyle = .singleLine // Restore separators
-//            }
-//        }
+    func setupContentUnavailableConfig() {
+        if tableItems.count == 0 {
+            var config = UIContentUnavailableConfiguration.empty()
+            
+            config.image = UIImage(systemName: "figure.hiking")
+            config.text = "You don't have any gear"
+            config.secondaryText = "Add items and get hiking"
+            self.contentUnavailableConfiguration = config
+        } else {
+            self.contentUnavailableConfiguration = nil
+        }
+    }
     
 }
 
@@ -87,13 +73,15 @@ extension KitViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.categoryReuseID, for: indexPath)
         // setup the table cell
         
-            let kitItem = tableItems[indexPath.row]
-            var content = cell.defaultContentConfiguration()
-            
-            content.text = "\(kitItem.count) \(kitItem.itemName)"
-            cell.contentConfiguration = content
-//            tableView.rowHeight = 40
-            
+        let kitItem = tableItems[indexPath.row]
+        var content = cell.defaultContentConfiguration()
+        
+        content.text = "\(kitItem.count) \(kitItem.itemName)"
+        content.secondaryText = "\(kitItem.itemType)"
+        
+        cell.contentConfiguration = content
+        //            tableView.rowHeight = 40
+        
         return cell
     }
     
@@ -102,13 +90,19 @@ extension KitViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
         if editingStyle == .delete {
             print("deleted")
             self.tableItems.remove(at: indexPath.row)
+            
             self.tableView.beginUpdates()
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            
             self.tableView.endUpdates()
+            setupContentUnavailableConfig()
+            
         }
+        
     }
 }
 

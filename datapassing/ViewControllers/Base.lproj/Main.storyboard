@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,6 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PwJ-iO-Le7">
+                                <rect key="frame" x="0.0" y="103.00000000000003" width="393" height="312.66666666666674"/>
+                                <standardMapConfiguration key="preferredConfiguration"/>
+                            </mapView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gat-mI-IUk">
                                 <rect key="frame" x="121.66666666666669" y="596" width="150" height="50"/>
                                 <constraints>
@@ -42,8 +47,12 @@
                         <constraints>
                             <constraint firstItem="Gat-mI-IUk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="493" id="LGK-xm-qKz"/>
                             <constraint firstItem="I16-FM-8J6" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="LSM-zc-bwT"/>
+                            <constraint firstItem="I16-FM-8J6" firstAttribute="top" secondItem="PwJ-iO-Le7" secondAttribute="bottom" id="Ny3-rN-LoQ"/>
                             <constraint firstItem="I16-FM-8J6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SOL-58-NVz"/>
+                            <constraint firstItem="PwJ-iO-Le7" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="dJp-Uu-8Sc"/>
                             <constraint firstItem="Gat-mI-IUk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="g87-7D-trg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PwJ-iO-Le7" secondAttribute="trailing" id="hbv-nJ-kKr"/>
+                            <constraint firstItem="PwJ-iO-Le7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="iId-vu-nOK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PRn-t8-1d9"/>
@@ -55,7 +64,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1066.4122137404579" y="3.5211267605633805"/>
+            <point key="canvasLocation" x="1015" y="4"/>
         </scene>
         <!--Kit View Controller-->
         <scene sceneID="caN-du-Wtc">
@@ -102,7 +111,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eWm-SG-yq2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1955" y="4"/>
+            <point key="canvasLocation" x="1863" y="4"/>
         </scene>
         <!--List View Controller-->
         <scene sceneID="gHG-Tf-L0r">
@@ -140,7 +149,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ecp-ew-PpL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2824" y="4"/>
+            <point key="canvasLocation" x="2709" y="4"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4om-VC-9fn">

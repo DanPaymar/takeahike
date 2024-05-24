@@ -96,6 +96,12 @@ extension ListViewController: UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        var section = user.datasource
+        
+        return "\(section)"
+    }
+    
     
 }
 
