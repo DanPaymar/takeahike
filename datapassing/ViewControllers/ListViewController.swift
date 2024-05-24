@@ -28,7 +28,6 @@ class ListViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,15 +40,6 @@ class ListViewController: UIViewController {
     @IBAction func addCustomButton(_ sender: Any) {
         showAddItem()
     }
-    
-//    weak var delegate: ListViewControllerDelegate?
-//
-//        // Call this method when the user updates the items
-//        func updateItems() {
-//            // ... your logic for updating items ...
-//            
-//            delegate?.didUpdateItems()
-//        }
     
     private func showAddItem() {
         let alertController = UIAlertController(title: "Add Custom Item", message: "Type in your item here", preferredStyle: .alert)
@@ -96,12 +86,12 @@ extension ListViewController: UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        var section = user.datasource
-        
-        return "\(section)"
-    }
-    
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        var section = user.datasource
+//        
+//        return "\(section)"
+//    }
+//    
     
 }
 

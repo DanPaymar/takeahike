@@ -12,31 +12,31 @@ class StartViewController: UIViewController {
     // intiliaze a new user
     var user = User()
     
-    @IBOutlet weak var startButton: UIButton!
+//    @IBOutlet weak var startButton: UIButton!
+//    
+//    @IBOutlet weak var startViewLabel: UILabel!
     
-    @IBOutlet weak var startViewLabel: UILabel!
     
-    
-    
-    @IBAction func startButton(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "goToList", sender: self)
-    }
+//    
+//    @IBAction func startButton(_ sender: UIButton) {
+//        self.performSegue(withIdentifier: "goToList", sender: self)
+//    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupButton()
-        setupStartLabel()
+//        setupButton()
+//        setupStartLabel()
         view.backgroundColor = .secondarySystemBackground
     }
     
-    func setupButton() {
-        startButton.setTitle("Kit List", for: .normal)
-        startButton.tintColor = .green
-    }
-    func setupStartLabel() {
-        startViewLabel.text = "Take a Hike"
-        startViewLabel.textColor = .systemGray2
-        startViewLabel.font = .systemFont(ofSize: 44, weight: .heavy)
-    }
+//    func setupButton() {
+//        startButton.setTitle("Kit List", for: .normal)
+//        startButton.tintColor = .green
+//    }
+//    func setupStartLabel() {
+//        startViewLabel.text = "Take a Hike"
+//        startViewLabel.textColor = .systemGray2
+//        startViewLabel.font = .systemFont(ofSize: 44, weight: .heavy)
+//    }
 }

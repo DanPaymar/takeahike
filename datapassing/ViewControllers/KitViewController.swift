@@ -64,7 +64,7 @@ class KitViewController: UIViewController {
 extension KitViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        // if the no table items are in the essential array no table cells will appear
+        // if no table items are in the essential array no table cells will appear
         return tableItems.count
         
     }
@@ -80,7 +80,6 @@ extension KitViewController: UITableViewDataSource, UITableViewDelegate {
         content.secondaryText = "\(kitItem.itemType)"
         
         cell.contentConfiguration = content
-        //            tableView.rowHeight = 40
         
         return cell
     }
@@ -94,6 +93,8 @@ extension KitViewController: UITableViewDataSource, UITableViewDelegate {
         if editingStyle == .delete {
             print("deleted")
             self.tableItems.remove(at: indexPath.row)
+            let resetListVC = user.datasource[indexPath.row]
+            resetListVC.count = 0
             
             self.tableView.beginUpdates()
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
